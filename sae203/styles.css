@@ -1,0 +1,343 @@
+/* 1. VARIABLES ET CONFIGURATION GLOBALE */
+:root {
+    --deep-ocean: #002233;
+    --wave-blue: #004466;
+    --clear-water: #006699;
+    --sand: #f0f8ff;
+    --coral-accent: #ff6b6b;
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: #333;
+    background-color: var(--sand);
+}
+
+/* 2. NAVIGATION */
+nav {
+    background: var(--wave-blue);
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: var(--white);
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--coral-accent);
+}
+
+/* 3. EN-TÊTE */
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 4. LAYOUT ET TITRES */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.container-fluid {
+    padding: 20px;
+}
+
+h2 {
+    color: var(--wave-blue);
+    border-bottom: 3px solid var(--clear-water);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 5. CARTES ANIMAUX (INDEX) */
+.animal-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px var(--shadow);
+    margin-bottom: 40px;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.animal-card img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.animal-content {
+    padding: 30px;
+}
+
+.animal-content h3 {
+    margin-top: 0;
+    color: var(--clear-water);
+}
+
+/* 6. TABLEAUX (LISTING) - VERSION AMÉLIORÉE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 30px auto; /* Centre le wrapper avec une marge en haut/bas */
+    background: var(--white);
+    padding: 0; /* On enlève le padding pour que le header du tableau colle aux bords */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px var(--shadow);
+    max-width: 100%;
+}
+
+.marine-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Évite que le tableau ne soit trop écrasé sur petit écran */
+}
+
+.marine-table thead th {
+    background-color: var(--wave-blue);
+    color: var(--white);
+    padding: 18px 15px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.marine-table tbody tr {
+    transition: background-color 0.3s;
+    border-bottom: 1px solid #eee;
+}
+
+/* Effet zébré pour une meilleure lecture */
+.marine-table tbody tr:nth-child(even) {
+    background-color: #f8fbff;
+}
+
+.marine-table tbody tr:hover {
+    background-color: #f0f4f8;
+}
+
+.marine-table td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.thumb {
+    width: 90px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 7. BADGES DE STATUT */
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.endangered { background-color: #ffcccc; color: #cc0000; }
+.vulnerable { background-color: #fff3cd; color: #856404; }
+.secure { background-color: #d4edda; color: #155724; }
+
+/* 8. PIED DE PAGE */
+footer {
+    text-align: center;
+    padding: 50px;
+    background: var(--deep-ocean);
+    color: #aab;
+    margin-top: 50px;
+}
+
+/* 9. RESPONSIVE - CORRECTION ET CENTRAGE */
+@media (max-width: 768px) {
+    .table-wrapper {
+        overflow-x: visible; /* On laisse le contenu s'afficher */
+        background: transparent;
+        box-shadow: none;
+        margin: 10px 0;
+    }
+
+    .marine-table {
+        min-width: 100%;
+    }
+
+    .marine-table thead {
+        display: none; /* Cache les entêtes classiques */
+    }
+
+    .marine-table, .marine-table tbody, .marine-table tr, .marine-table td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box; /* Assure que le padding ne dépasse pas */
+    }
+
+    .marine-table tr {
+        margin-bottom: 25px;
+        border: none;
+        border-radius: 12px;
+        background: var(--white);
+        box-shadow: 0 4px 15px var(--shadow);
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+
+    .marine-table td {
+        text-align: right;
+        padding: 12px 20px;
+        position: relative;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between; /* Aligne le label à gauche et la valeur à droite */
+        align-items: center;
+    }
+
+    .marine-table td:last-child {
+        border-bottom: none;
+    }
+
+    /* Le label (data-label) est maintenant bien à gauche */
+    .marine-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: var(--wave-blue);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        text-align: left;
+        margin-right: 10px;
+    }
+    
+    /* Centre les images dans les cartes sur mobile */
+    .marine-table td[data-label="Aperçu"] {
+        justify-content: center;
+        background: #f9f9f9;
+        padding: 20px;
+    }
+    
+    .marine-table td[data-label="Aperçu"]::before {
+        display: none; /* On cache le label "Aperçu" car l'image est explicite */
+    }
+
+    .thumb {
+        width: 150px;
+        height: 100px;
+    }
+
+    /* On ajoute une belle barre colorée tout en haut du conteneur global */
+    .table-wrapper {
+        border-top: 6px solid var(--deep-ocean);
+        border-radius: 8px;
+    }
+
+    /* Transformation de la première ligne de chaque carte (l'ID) en en-tête coloré */
+    .marine-table td:first-child {
+        background-color: var(--deep-ocean);
+        color: var(--white);
+        justify-content: center; /* Centre le texte ID */
+        font-size: 1.1rem;
+        padding: 10px;
+        border-bottom: none;
+    }
+
+    /* On change la couleur du label "ID" pour qu'il ressorte sur le fond bleu */
+    .marine-table td:first-child::before {
+        color: var(--sand); 
+    }
+}
+
+    /* 10. FORMULAIRE DE RECHERCHE */
+.search-container {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow);
+    margin: 20px auto 50px auto; /* Le 50px en bas empêche de recouvrir la suite */
+    max-width: 600px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espace régulier entre le label, le champ et le bouton */
+}
+
+.search-form label {
+    font-weight: bold;
+    color: var(--wave-blue);
+    font-size: 1.1rem;
+}
+
+.search-form input[type="text"] {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: var(--clear-water);
+    outline: none; /* Retire la bordure noire par défaut du navigateur */
+}
+
+.search-form button {
+    padding: 12px 25px;
+    background: var(--wave-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search-form button:hover {
+    background: var(--clear-water);
+    transform: translateY(-2px); /* Petit effet de soulèvement au survol */
+}
+
+/* Style propre pour la phrase de résultat dans reponse_recherche.php */
+.search-result-text {
+    font-size: 1.2rem;
+    color: var(--wave-blue);
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--clear-water);
+    box-shadow: 0 2px 10px var(--shadow);
+    margin-bottom: 30px;
+}
