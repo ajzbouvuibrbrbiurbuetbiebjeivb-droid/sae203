@@ -11,7 +11,7 @@
         <a href="index.php">Accueil</a>
         <a href="listing.php">Listing</a>
         <a href="form_recherche.php">Recherche</a>
-        <a href="admin">Admin</a>
+        <a href="admin/admin.php">Admin</a>
     </nav>
     <header>
         <h1>Inventaire des Espèces</h1>
